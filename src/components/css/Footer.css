@@ -1,0 +1,54 @@
+.footer{
+    
+	padding:0;
+}
+
+.footer .box-container{
+  border:.1rem solid rgba(0,0,0,.1);
+  background:black;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap:1.5rem;
+}
+
+.footer .box-container .box{
+  flex:1 1 20rem;
+  text-align: center;
+}
+
+.footer .box-container .box .links{
+    flex:1 1 20rem;
+    text-align: center;
+  }
+.footer .box-container .box h3{
+  color:#2c2c54;
+  font-size: 2.5rem;
+  padding-bottom: 2px;
+}
+
+.footer .box-container .box a{
+  color:#e6e6e6;
+  font-size: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: block;
+}
+
+.footer .box-container .box a:hover{
+  color:#ff9f1a;
+}
+
+.footer .box-container .credit{
+  text-align: center;
+  width:100%;
+  border-top: .1rem solid rgba(0,0,0,.1);
+  font-size: 1.5rem;
+  padding:1rem;
+  padding-top: 2rem;
+  color:#999;
+  background-color:#131338;
+}
+
+.footer .box-container .credit span{
+  color:#ff9f1a;
+}

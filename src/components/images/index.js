@@ -1,0 +1,11 @@
+import homeImage from '../images/home.jpg';
+import pulses from '../images/pulses.jpg';
+import snackes from '../images/snacks.jpg';
+import household from '../images/household-products.png';
+import sugar from '../images/sugar.jpg';
+import beverages from '../images/beverages.jpg';
+import oil from '../images/oil.jpg';
+import spices from '../images/spices.jpg';
+import tea from '../images/tea.jpg';
+import peronalcare from '../images/peronal-care.jpg';
+export{homeImage, pulses, beverages, oil, spices, tea, peronalcare,snackes,household, sugar};
