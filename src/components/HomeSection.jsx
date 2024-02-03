@@ -2,13 +2,11 @@ import React from 'react';
 import './css/Header.css';
 import { homeImage } from './images';
 
-
-
 const HomeSection = () => {
   const colorCode = '#2c2c54';
   return (
-    <section className="home px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-24 pt-8 pb-16" id="home">
-      <div className="slide-container active flex flex-col lg:flex-row bg-white rounded-lg overflow-hidden">
+    <section className="home px-4 sm:px-6 md:px-8 2xl:px-24 pt-16 pb-16" id="home">
+  <div className="slide-container active flex flex-col lg:flex-row bg-white rounded-lg overflow-hidden">
         <div className="slide lg:w-1/2 lg:pr-8 min-h-full lg:min-h-screen flex items-center gap-4 p-4 lg:p-8">
           <div className="content py-2 flex-1 text-left">
             <h3 style={{ color: colorCode}} className="text-4xl lg:text-5xl xl:text-6xl font-bold mb-4">Zubaida Mart</h3>

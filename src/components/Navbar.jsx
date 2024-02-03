@@ -1,51 +1,89 @@
 import React, { useState } from 'react';
+import { AiOutlineClose, AiOutlineMenu, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineUser } from 'react-icons/ai';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBars,faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-
-import './css/Navbar.css';
-
-
+import { Link } from 'react-router-dom';
 const Navbar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-  
-    const toggleNavbar = () => {
-      setIsOpen(!isOpen);
-    };
-    const colorCode = '#2c2c54';
-    return (
-      <nav style={{ backgroundColor: colorCode}} className="flex items-center justify-between flex-wrap p-6" > {/* Increased padding (p-6) */}
-        <div className="block lg:hidden">
-          <button onClick={toggleNavbar} className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-            <FontAwesomeIcon icon={faBars} className="h-4 w-4" /> {/* Menu icon on mobile */}
-          </button>
-        </div>
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-        <span className="font-semibold text-3xl tracking-tight">Zubaida Mart</span>
+  // State to manage the navbar's visibility
+  const [nav, setNav] = useState(false);
+
+  // Toggle function to handle the navbar's display
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
+  // Array containing navigation items
+  const navItems = [
+    { id: 1, text: 'Home' },
+    { id: 2, text: 'Products' },
+    { id: 3, text: 'Featured' },
+    { id: 4, text: 'About' },
+    { id: 5, text: 'Reviews' },
+  ];
+
+  return (
+    <div className="fixed top-0 left-0 right-0 z-30 bg-gray-800 p-4 flex items-center justify-between shadow-md">
+      {/* Mobile Navigation Icon */}
+      <div onClick={handleNav} className='block md:hidden'>
+        {nav ? <AiOutlineClose size={20} style={{ color: '#ffffff' }}/> : <AiOutlineMenu size={20} style={{ color: '#ffffff' }}/>}
       </div>
-        <div className={`${isOpen ? `block` : `hidden`} w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
-          <div className="text-lg lg:flex-grow">
-            <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4">
-            Home
-            </a>
-            <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4">
-              Features
-            </a>
-            <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4">
-              Products
-            </a>
-          </div>
-          
-        </div>
-        <div>
-            <a href="#cart" className="text-lg text-white hover:text-teal-200 mr-4">
-              <FontAwesomeIcon icon={faShoppingCart} />
-            </a>
-            <a href="#profile" className="text-lg text-white hover:text-teal-200 mr-4">
-              <FontAwesomeIcon icon={faUser} />
-            </a>
-          </div>
-      </nav>
-    );
+      {/* Logo */}
+      <h1 className='w-full md:w-auto text-3xl font-bold text-[#ffffff] pl-4 md:pl-0'>
+        Zubaida Mart
+      </h1>
+
+      {/* Desktop Navigation */}
+      <ul className='hidden md:flex space-x-4 justify-center'>
+        {navItems.map(item => (
+          <li
+            key={item.id}
+            className='text-white p-4 hover:bg-[#ff9f1a] rounded-xl m-2 cursor-pointer duration-300 hover:text-white'
+          >
+            {/* Use Link to navigate to the specified route */}
+            <Link to={`/${item.text.toLowerCase()}`}>{item.text}</Link>
+          </li>
+        ))}
+      </ul>
+
+      {/* Icons for Desktop */}
+      <div className="flex items-center space-x-5 mt-4">
+        <a href="#" className="text-white cursor-pointer hover:text-[#ff9f1a]">
+        <FontAwesomeIcon icon={faHeart}/>
+        </a>
+        <a href="#" className="text-white cursor-pointer hover:text-[#ff9f1a]">
+        <FontAwesomeIcon icon={faShoppingCart} />
+        </a>
+        <a href="#" className="text-white cursor-pointer hover:text-[#ff9f1a]">
+        <FontAwesomeIcon icon={faUser} />
+        </a>
+      </div>
+
+      
+
+      {/* Mobile Navigation Menu */}
+      <ul
+        className={
+          nav
+            ? 'fixed md:hidden left-0 top-[3.5rem] w-[60%] h-full border-r border-r-gray-900 bg-gray-800 ease-in-out duration-500'
+            : 'ease-in-out w-[60%] duration-500 fixed top-0 bottom-0 left-[-100%]'
+        }
+      >
+        
+
+        {/* Mobile Navigation Items */}
+        {navItems.map(item => (
+          <li
+            key={item.id}
+            className='text-white p-4 border-b rounded-xl hover:bg-[#ff9f1a] duration-300 hover:text-white cursor-pointer border-gray-600'
+          >
+            {/* Use Link to navigate to the specified route */}
+            <Link to={`/${item.text.toLowerCase()}`}>{item.text}</Link>
+          </li>
+        ))}
+      </ul>
+      
+    </div>
+  );
 };
 
 export default Navbar;
@@ -54,46 +92,3 @@ export default Navbar;
 
 
 
-// const Navbar = () => {
-//     const [isOpen, setIsOpen] = useState(false);
-  
-//     const toggleNavbar = () => {
-//       setIsOpen(!isOpen);
-//     };
-  
-//     return (
-//       <nav className="flex items-center justify-between flex-wrap bg-gray-800 p-6"> {/* Increased padding (p-6) */}
-//         <div className="flex items-center flex-shrink-0 text-white mr-6">
-//           <span className="font-semibold text-3xl tracking-tight">Zubaida Mart</span> {/* Increased text size (text-3xl) */}
-//         </div>
-//         <div className="block lg:hidden">
-//         <button onClick={toggleNavbar} className="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-//           <svg className="fill-current h-4 w-4" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v15z"/></svg> {/* Adjusted size of the menu icon (h-4 w-4) */}
-//         </button>
-//         </div>
-//         <div className={`${isOpen ? `block` : `hidden`} w-full block flex-grow lg:flex lg:items-center lg:w-auto`}>
-//           <div className="text-lg lg:flex-grow">
-//             <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white  hover:text-teal-200 mr-4">
-//             Home
-//             </a>
-//             <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white  hover:text-teal-200 mr-4">
-//               Features
-//             </a>
-//             <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0  text-white  hover:text-teal-200 mr-4">
-//               Products
-//             </a>
-//           </div>
-//           <div>
-//             <a href="#cart" className="text-lg text-white  hover:text-teal-200 mr-4">
-//               <FontAwesomeIcon icon={faShoppingCart} />
-//             </a>
-//             <a href="#profile" className="text-lg text-white  hover:text-teal-200 mr-4">
-//               <FontAwesomeIcon icon={faUser} />
-//             </a>
-//           </div>
-//         </div>
-//       </nav>
-//     );
-// };
-
-// export default Navbar;
