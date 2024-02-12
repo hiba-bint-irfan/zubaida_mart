@@ -4,10 +4,9 @@ import './css/Category.css';
 import { Link } from 'react-router-dom';
 const CategoriesSection = () => {
   return (
-      <section className="categories">
-            <h1 className="heading" data-aos="fade-up">
-              Categories <span>products</span>
-            </h1>
+
+        <div className="categories mx-auto mt-8 pt-16 pb-16">
+        <h1 class="heading" data-aos="fade-up"> Categories <span> product</span></h1>
             <div className="box-container">
             <div className="box">
               <Link to="/pulsesbean">
@@ -93,7 +92,7 @@ const CategoriesSection = () => {
               </div>
 
             </div>
-          </section> 
+          </div> 
   );
 };
 

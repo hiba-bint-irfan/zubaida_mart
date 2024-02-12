@@ -3,7 +3,10 @@ import { AiOutlineClose, AiOutlineMenu, AiOutlineHeart, AiOutlineShoppingCart, A
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faBars,faHeart, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useCart } from './pages/CartContext';
 const Navbar = () => {
+  const { getTotalItems } = useCart();
+  console.log("Total items in cart:", getTotalItems());
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);
 
@@ -47,15 +50,17 @@ const Navbar = () => {
 
       {/* Icons for Desktop */}
       <div className="flex items-center space-x-5 mt-4">
-        <a href="#" className="text-white cursor-pointer hover:text-[#ff9f1a]">
-        <FontAwesomeIcon icon={faHeart}/>
-        </a>
-        <a href="#" className="text-white cursor-pointer hover:text-[#ff9f1a]">
-        <FontAwesomeIcon icon={faShoppingCart} />
-        </a>
-        <a href="#" className="text-white cursor-pointer hover:text-[#ff9f1a]">
-        <FontAwesomeIcon icon={faUser} />
-        </a>
+        
+        <Link to="/cart" className="text-white cursor-pointer hover:text-[#ff9f1a] relative flex items-center">
+      <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+      {getTotalItems() > 0 && (
+        <span className="ml-1 bg-[#ff9f1a] text-black rounded-full px-2 py-1 flex items-center justify-center text-xs">
+          {getTotalItems()}
+        </span>
+      )}
+    </Link>
+        
+        
       </div>
 
       

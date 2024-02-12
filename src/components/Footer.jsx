@@ -3,8 +3,8 @@ import './css/Footer.css';
 
 const Footer = () => {
   return (
-    <section className="footer bg-gray-800 text-white py-8">
-      <div className="box-container ">
+    <footer className="footer bg-gray-800 text-white py-8 mb-auto">
+      <div className="box-container mx-auto">
         <div className="box text-center mb-4 md:mb-0">
             <h3 className="text-2x0 font-bold mb-4">Follow Us</h3>
             <div className="links flex justify-center space-x-4">
@@ -19,8 +19,10 @@ const Footer = () => {
                 Created by <span className="font-bold">Hiba Irfan</span> | All rights reserved
             </div>
       </div>
-    </section>
+      </footer>
   );
 };
 
 export default Footer;
+
+
